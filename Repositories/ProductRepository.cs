@@ -4,6 +4,6 @@ using RepositoryStore.Repositories.Interfaces;
 
 namespace RepositoryStore.Repositories;
 
-public class ProductRepository(MongoContext context) : Repository<Product>(context), IProductRepository
+public class ProductRepository(MongoDbContext context) : Repository<Product>(context), IProductRepository
 {
 }
