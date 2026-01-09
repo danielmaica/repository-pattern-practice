@@ -10,7 +10,7 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
 {
   private readonly IMongoCollection<T> _collection;
 
-  public Repository(MongoContext context)
+  public Repository(MongoDbContext context)
   {
     _collection = context.Database.GetCollection<T>(typeof(T).Name);
   }

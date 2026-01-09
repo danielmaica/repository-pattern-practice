@@ -3,9 +3,9 @@ using MongoDB.Driver;
 
 namespace RepositoryStore.Data;
 
-public class MongoContext
+public class MongoDbContext
 {
-  public MongoContext(IOptions<MongoDbSettings> settings)
+  public MongoDbContext(IOptions<MongoDbSettings> settings)
   {
     var client = new MongoClient(settings.Value.ConnectionString);
     Database = client.GetDatabase(settings.Value.DatabaseName);

@@ -8,13 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // MongoDB
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
-builder.Services.AddSingleton<MongoContext>();
+builder.Services.AddSingleton<MongoDbContext>();
 
 // Health Check
 builder.Services
   .AddHealthChecks()
   .AddMongoDb(
-    sp => sp.GetRequiredService<MongoContext>().Database,
+    sp => sp.GetRequiredService<MongoDbContext>().Database,
     "mongodb",
     HealthStatus.Unhealthy,
     new[] { "db", "nosql", "mongo" },
