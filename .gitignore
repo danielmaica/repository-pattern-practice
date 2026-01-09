@@ -1,0 +1,23 @@
+﻿# Diretórios de build do .NET
+bin/
+obj/
+Debug/
+Release/
+
+# Arquivos de usuário do Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Configurações locais
+.vs/
+*.vscode/
+
+# Pacotes NuGet baixados
+packages/
+*.nupkg
+
+# Logs e temporários
+*.log
+*.tmp
