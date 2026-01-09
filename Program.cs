@@ -6,6 +6,7 @@ using RepositoryStore.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// MongoDB
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.AddSingleton<MongoContext>();
 
@@ -20,13 +21,12 @@ builder.Services
     TimeSpan.FromSeconds(5)
   );
 
+// Injeção de Dependência dos Repositórios
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
-// Repositories
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
@@ -40,6 +40,7 @@ if (builder.Environment.IsDevelopment())
   });
 }
 
+// Rotas Minimal API
 app.MapHealthChecks("/health");
 
 app.MapPost("/v1/products", async (CancellationToken ct, IProductRepository repo, string title) =>
