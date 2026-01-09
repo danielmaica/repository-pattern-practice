@@ -6,7 +6,6 @@ using RepositoryStore.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// MongoDB
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
 builder.Services.AddSingleton<MongoContext>();
 
